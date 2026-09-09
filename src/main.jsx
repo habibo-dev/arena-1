@@ -6,9 +6,11 @@ import { LanguageProvider } from './context/LanguageContext.jsx'
 import { CompanyProvider } from './context/CompanyContext.jsx'
 import './index.css'
 
+const basename = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') || '/'
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={basename === '/' ? undefined : basename}>
       <LanguageProvider>
         <CompanyProvider>
           <App />
